@@ -34,21 +34,21 @@ filtered_data = data[(data['WEEK_START_parsed'] == week) &
 color_palette = px.colors.qualitative.Dark24
 
 # Plotting with Plotly
-fig = px.scatter(filtered_data, x='Incr.Revenue', y='Incr. Gross Profit',
+fig = px.scatter(filtered_data, x='Incr. Gross Profit', y='Incr.Revenue',
                  color='Parent_Company', hover_data=['UPC'],
                  color_discrete_sequence=color_palette)
 
 fig.update_layout(
-    title='Incr. Revenue vs Incr. Gross Profit',
-    xaxis_title='Incr.Revenue',
-    yaxis_title='Incr. Gross Profit',
+    title='Incr. Gross Profit vs Incr. Revenue ',
+    xaxis_title='Incr. Gross Profit',
+    yaxis_title='Incr.Revenue',
     xaxis=dict(showgrid=True),
     yaxis=dict(showgrid=True)
 )
 
 # Define manual ranges for the axes (you may adjust these based on your data)
-x_range = [filtered_data['Incr.Revenue'].min() - 50, filtered_data['Incr.Revenue'].max() + 50]
-y_range = [filtered_data['Incr. Gross Profit'].min() - 50, filtered_data['Incr. Gross Profit'].max() + 50]
+y_range = [filtered_data['Incr.Revenue'].min() - 50, filtered_data['Incr.Revenue'].max() + 50]
+x_range = [filtered_data['Incr. Gross Profit'].min() - 50, filtered_data['Incr. Gross Profit'].max() + 50]
 
 # Highlighting x=0 and y=0 axes across the entire plot
 fig.add_shape(type="line", x0=0, y0=y_range[0], x1=0, y1=y_range[1],
